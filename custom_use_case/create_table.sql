@@ -1,7 +1,5 @@
 CREATE DATABASE ecommerce;
 
-\c ecommerce
-
 CREATE TABLE products (
     ProductID INT PRIMARY KEY,
     ProductName TEXT,
