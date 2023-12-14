@@ -80,7 +80,7 @@ for wl in worloads:
                             connection.close()
 
                 if db_name=='Y':
-                    command_yugabyte = """./bin/ycsb.sh {load_or_run} jdbc 
+                    command = """./bin/ycsb.sh {load_or_run} jdbc 
                         -s -P ./yugabyte-binding/yugabyte.properties 
                         -P workloads/workload{workload_name} -p recordcount={recordcount_name} 
                         -p operationcount={operationcount_name} 
@@ -91,7 +91,7 @@ for wl in worloads:
                             load_or_run=lr
                         )
                 elif db_name=='C':
-                    command_cockroach = """./bin/ycsb.sh {load_or_run} jdbc 
+                    command = """./bin/ycsb.sh {load_or_run} jdbc 
                         -s -P ./cockroach-binding/cockroach.properties 
                         -P workloads/workload{workload_name} -p recordcount={recordcount_name} 
                         -p operationcount={operationcount_name}
@@ -104,11 +104,11 @@ for wl in worloads:
                 else:
                     print('Invalid DB parameter!!')
                     exit(-1)
-                output_file = "./log_cockroach/lr_{load_or_run}-wl_{workload_name}-rc_{recordcount_name}-oc_{operationcount_name}.txt".format( workload_name=wl,
+                output_file = "./log/lr_{load_or_run}-wl_{workload_name}-rc_{recordcount_name}-oc_{operationcount_name}.txt".format( workload_name=wl,
                         recordcount_name=rec,
                         operationcount_name=op,
                         load_or_run=lr)
-                run_bash_command(command_cockroach,directory,output_file)
+                run_bash_command(command,directory,output_file)
             
                 
 
